@@ -1,10 +1,82 @@
 # Importation des bibliothèques dites classiques 
 import numpy as np 
 import pandas as pd 
-import matplotlib as plt 
+import matplotlib.pyplot as plt 
 
 #Importation des bibliothèques pour de la modélisation 
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
+#Prise en main de la base de données et premiers nettoyages 
+
+## Premières esquisses
+df = pd.read_csv('data.csv')
+df.shape
+df.columns
+df.head()
+df.dropna()
+df.reset_index(drop=True, inplace=True)  # Réinitialise l'index à 0
+df.index = df.index + 1 
+df.head()
+
+
+
+# Conversion des années en format "DateTime" + réorganisation du df
+df['Production_Year']= pd.to_datetime(df['Production_Year'], format='%Y')
+df.head()
+df_sorted= df.sort_values(by='Production_Year')
+df_sorted.head()
+
+#Obtention des premières statistiques 
+
+stat= df_sorted.describe()
+stat #valeurs élementaires 
+
+mediane = df_sorted.select_dtypes(include=['number']).median()
+mediane #obtention des médianes des différentes valeurs numériques du df
+
+### Visualisation prmimaire
+
+# Supprimer les lignes contenant 2019.5 dans Production_Year
+df_sorted = df_sorted[df_sorted['Production_Year'] != '2019.5']
+
+# Vérification des données après la suppression
+print(df_sorted.head())
+
+# Liste des colonnes numériques
+numeric_columns = ['Greenhouse_Gas_Emissions', 'Pollutants_Emitted', 'Water_Consumption', 
+                   'Energy_Consumption', 'Waste_Generation', 'Sales_Revenue']
+
+# Fonction pour tracer des histogrammes comparant les entreprises
+def plot_comparative_histograms(df, time_column, company_column, numeric_columns):
+    # Obtenir les entreprises uniques
+    companies = df_sorted[company_column].unique()
+
+    # Tracer des histogrammes pour chaque colonne numérique
+    for col in numeric_columns:
+        plt.figure(figsize=(12, 6))
+        
+        # Créer un histogramme pour chaque entreprise
+        for company in companies:
+            # Filtrer les données pour l'entreprise
+            company_data = df_sorted[df_sorted[company_column] == company]
+            plt.hist(company_data[time_column].dt.year, 
+                     weights=company_data[col], 
+                     bins=10, 
+                     alpha=0.5,  # Translucide pour superposition
+                     label=company)
+
+        plt.title(f'Comparaison de {col} par année')
+        plt.xlabel('Année')
+        plt.ylabel(f'{col}')
+        plt.legend(title='Entreprises')
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.show()
+
+# Appel de la fonction pour tracer les histogrammes
+plot_comparative_histograms(df_sorted, time_column='Production_Year', company_column='Company', numeric_columns=numeric_columns)
+
+
+print(plot_comparative_histograms)
