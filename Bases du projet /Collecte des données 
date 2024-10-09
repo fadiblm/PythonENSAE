@@ -80,5 +80,3 @@ plot_comparative_histograms(df_sorted, time_column='Production_Year', company_co
 
 
 print(plot_comparative_histograms)
-
-#Fin pour le mercredi 9 octobre 
