@@ -76,7 +76,6 @@ def plot_comparative_histograms(df, time_column, company_column, numeric_columns
         plt.show()
 
 # Appel de la fonction pour tracer les histogrammes
-plot_comparative_histograms(df_sorted, time_column='Production_Year', company_column='Company', numeric_columns=numeric_columns)
+graphs= plot_comparative_histograms(df_sorted, time_column='Production_Year', company_column='Company', numeric_columns=numeric_columns)
 
-
-print(plot_comparative_histograms)
+## les graphes ne s'affichent pas --> voir avec la chargée de TD, tout essayé mais n'apparaît pas dans la console ##
