@@ -2,5 +2,15 @@ Utilisation de la base de données (World Bank) sur le montant total des importa
 À l'aide de cela: détermination de la proportions des pays à qui l'on importe le plus // détermination de la valeur du panier moyen en textile d'un consommateur (Valeur tot importation // 
 part pour la consommation finale // valeur ajustée = tot * part conso finale// coeff multiplicateur * valeur ajustée = valeur au prix de vente // panier moyen  = prix de vente / nbre conso// 
 
+Recherche pour le travail sur la somme des importations (Comment y ramener à l'impact environnemental)?
+L'article indique que 91% de l'impact environnemental du textile correspond à la production et à au transport.
+- Pollution de la production: on regarde les tonnes de CO2eq de chaque pays, par secteur (secteur industriel) et ensuite la part du secteur textile dans le secteur industriel du pays. On obtient les tonnes de CO2eq de la production textile du pays.
+- Transport: calcul la distance entre deux pays (pays d'où vient le produit / pays où le pays est importé) avec pour proxy le port de commerce / aéroport / ville de départ principal.e, on sélectionne le mode de transport le plus utilisé pour l'échange de textile et on multiplie par le facteur d'émission de ce mode de transport.
 
+
+Bases de données:
+- Pour le calcul des émissions de la production textile par pays:
+https://edgar.jrc.ec.europa.eu/country_profile >> avec le secteur Industrial combustion
+https://data.worldbank.org/indicator/NV.MNF.TXTL.ZS.UN >> part du secteur 
+https://di.unfccc.int/time_series?_gl=1*1xxqc5j*_ga*MjA0Njk5NDEyOS4xNzMyNjQxMjQ0*_ga_7ZZWT14N79*MTczMjY0MTI0NC4xLjEuMTczMjY0MTI5Ni4wLjAuMA..
 
