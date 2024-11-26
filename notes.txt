@@ -1,4 +1,6 @@
-###Utilisation de la base de données (World Bank) sur le montant total des importations en textile. 
+Utilisation de la base de données (World Bank) sur le montant total des importations en textile. 
 À l'aide de cela: détermination de la proportions des pays à qui l'on importe le plus // détermination de la valeur du panier moyen en textile d'un consommateur (Valeur tot importation // 
-part pour la consommation finale // valeur ajustée = tot * part conso finale// coeff multiplicateur * valeur ajustée = valeur au prix de vente //  ###
+part pour la consommation finale // valeur ajustée = tot * part conso finale// coeff multiplicateur * valeur ajustée = valeur au prix de vente // panier moyen  = prix de vente / nbre conso// 
+
+
 
